@@ -323,6 +323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 811342046}
+  - component: {fileID: 811342047}
   m_Layer: 5
   m_Name: MainGauge
   m_TagString: Untagged
@@ -342,8 +343,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1829778659}
-  - {fileID: 1446666345}
   - {fileID: 1927192200}
+  - {fileID: 1446666345}
   - {fileID: 1555501369}
   m_Father: {fileID: 1709578826}
   m_RootOrder: 1
@@ -353,6 +354,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000061035156, y: -0.00018310547}
   m_SizeDelta: {x: 0.060272217, y: -0.00024414062}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &811342047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811342045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9bf454092d256488f4307e1179f2f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadZone: {fileID: 1927192201}
+  deadZoneStartSize: 80
+  safeZone: {fileID: 1446666346}
+  safeZoneStartSize: 40
+  Mouth: {fileID: 1555501370}
 --- !u!1 &940447899
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +493,7 @@ GameObject:
   - component: {fileID: 1446666347}
   - component: {fileID: 1446666346}
   m_Layer: 5
-  m_Name: gaugeFrontDown
+  m_Name: gaugeSafeZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -493,7 +511,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 811342046}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -884,7 +902,6 @@ GameObject:
   - component: {fileID: 1709578825}
   - component: {fileID: 1709578824}
   - component: {fileID: 1709578823}
-  - component: {fileID: 1709578827}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -973,18 +990,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1709578827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709578822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a9bf454092d256488f4307e1179f2f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1829778658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,7 +1076,7 @@ GameObject:
   - component: {fileID: 1927192202}
   - component: {fileID: 1927192201}
   m_Layer: 5
-  m_Name: gaugeFrontUp
+  m_Name: gaugeDeadZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1089,7 +1094,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 811342046}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

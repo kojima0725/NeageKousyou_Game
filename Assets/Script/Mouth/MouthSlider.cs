@@ -12,7 +12,7 @@ public class MouthSlider : MonoBehaviour
     /// <summary>
     /// スライダーの値の範囲を0～これとして計算を行う
     /// </summary>
-    const float SliderMaxValue = 100;
+    const float MaxValue = 100;
 
     /// <summary>
     /// スライダーコンポーネント
@@ -44,7 +44,7 @@ public class MouthSlider : MonoBehaviour
     private void Awake()
     {
         slider = gameObject.GetComponent<Slider>();
-        pos = slider.value * SliderMaxValue;
+        pos = slider.value * MaxValue;
     }
 
     private void Update()
@@ -88,9 +88,9 @@ public class MouthSlider : MonoBehaviour
             pos = 0;
             speed = 0;
         }
-        else if (pos > SliderMaxValue)
+        else if (pos > MaxValue)
         {
-            pos = SliderMaxValue;
+            pos = MaxValue;
         }
     }
 
@@ -99,6 +99,6 @@ public class MouthSlider : MonoBehaviour
     /// </summary>
     private void Draw()
     {
-        slider.value = pos / SliderMaxValue;
+        slider.value = pos / MaxValue;
     }
 }
