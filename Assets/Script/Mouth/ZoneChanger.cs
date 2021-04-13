@@ -29,9 +29,6 @@ public class ZoneChanger : MonoBehaviour
     [SerializeField]
     float safeZoneStartSize;
 
-    [SerializeField]
-    Slider Mouth;
-
     /// <summary>
     /// ゲームオーバーになるゾーンの位置
     /// </summary>
@@ -48,6 +45,15 @@ public class ZoneChanger : MonoBehaviour
         Draw();
     }
 
+
+    private void Update()
+    {
+        //ゲージの変形
+
+        //画面に反映
+        Draw();
+    }
+
     /// <summary>
     /// 状態を画面に反映する
     /// </summary>
@@ -59,4 +65,13 @@ public class ZoneChanger : MonoBehaviour
         deadZone.fillAmount = 1.0f - deadZoneSize / MaxValue;
     }
 
+    public float GetDeadZoneSize()
+    {
+        return deadZoneSize;
+    }
+
+    public float GetSafeZoneSize()
+    {
+        return safeZoneSize;
+    }
 }

@@ -41,6 +41,11 @@ public class MouthSlider : MonoBehaviour
     /// </summary>
     private float pos;
 
+    /// <summary>
+    /// 停止するかどうか
+    /// </summary>
+    bool pose = false;
+
     private void Awake()
     {
         slider = gameObject.GetComponent<Slider>();
@@ -49,17 +54,19 @@ public class MouthSlider : MonoBehaviour
 
     private void Update()
     {
-
-        if (Input.GetMouseButtonDown(0))
+        if (!pose || speed > 0)
         {
-            Jump();
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                Jump();
+            }
 
-        //重力を加える
-        AddG();
-        Move();
-        //画面に反映
-        Draw();
+            //重力を加える
+            AddG();
+            Move();
+            //画面に反映
+            Draw();
+        }
     }
 
     /// <summary>
@@ -100,5 +107,18 @@ public class MouthSlider : MonoBehaviour
     private void Draw()
     {
         slider.value = pos / MaxValue;
+    }
+
+    public float GetMouthSize()
+    {
+        return pos;
+    }
+
+    /// <summary>
+    /// ゲージの動きを止める
+    /// </summary>
+    public void Pose()
+    {
+        pose = true;
     }
 }
