@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 /// <summary>
 /// 徐々に上昇していくスコアゲージ
@@ -25,6 +26,13 @@ public class ScoreGauge : MonoBehaviour
     [SerializeField]
     float scoreUpRate;
 
+
+    /// <summary>
+    /// ゲージが満タンになったときの処理
+    /// </summary>
+    [SerializeField]
+    UnityEvent OnScoreUp;
+
     /// <summary>
     /// 現在のゲージの量
     /// </summary>
@@ -43,6 +51,10 @@ public class ScoreGauge : MonoBehaviour
         {
             GaugeUp();
         }
+
+        GaugeCheck();
+
+        Draw();
     }
 
     /// <summary>
@@ -51,7 +63,15 @@ public class ScoreGauge : MonoBehaviour
     private void GaugeUp()
     {
         value += scoreUpRate * Time.deltaTime;
-        Draw();
+    }
+
+    private void GaugeCheck()
+    {
+        if (value >= MaxValue)
+        {
+            OnScoreUp.Invoke();
+            value = 0;
+        }
     }
 
     /// <summary>
