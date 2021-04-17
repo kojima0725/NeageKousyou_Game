@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 /// <summary>
 /// 上下する口のスライダー
@@ -30,6 +31,9 @@ public class MouthSlider : MonoBehaviour
     /// </summary>
     [SerializeField]
     float jumpPower;
+
+    [SerializeField]
+    UnityEvent OnJump;
 
     /// <summary>
     /// 現在の速さ
@@ -75,6 +79,7 @@ public class MouthSlider : MonoBehaviour
     public void Jump()
     {
         speed = jumpPower;
+        OnJump.Invoke();
     }
 
 

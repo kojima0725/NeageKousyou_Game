@@ -34,6 +34,24 @@ public class ScoreGauge : MonoBehaviour
     UnityEvent OnScoreUp;
 
     /// <summary>
+    /// 効果音
+    /// </summary>
+    [SerializeField]
+    AudioSource gaugeSound;
+
+    /// <summary>
+    /// ゲージが空の時の効果音のピッチ
+    /// </summary>
+    [SerializeField]
+    float soundPitchStart;
+
+    /// <summary>
+    /// ゲージが満タンの時の効果音のピッチ
+    /// </summary>
+    [SerializeField]
+    float soundPitchEnd;
+
+    /// <summary>
     /// 現在のゲージの量
     /// </summary>
     float value = 0;
@@ -80,6 +98,9 @@ public class ScoreGauge : MonoBehaviour
     private void Draw() 
     {
         gauge.fillAmount = value / MaxValue;
+        float pitch;
+        pitch = soundPitchStart + (soundPitchEnd - soundPitchStart) * (value / MaxValue);
+        gaugeSound.pitch = pitch;
     }
 
     /// <summary>
@@ -88,6 +109,10 @@ public class ScoreGauge : MonoBehaviour
     public void Up()
     {
         isScoreUp = true;
+        if (!gaugeSound.isPlaying)
+        {
+            gaugeSound.Play();
+        }
     }
 
     /// <summary>
@@ -96,5 +121,9 @@ public class ScoreGauge : MonoBehaviour
     public void Stop()
     {
         isScoreUp = false;
+        if (gaugeSound.isPlaying)
+        {
+            gaugeSound.Pause();
+        }
     }
 }

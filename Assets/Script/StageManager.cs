@@ -26,6 +26,13 @@ public class StageManager : MonoBehaviour
     /// </summary>
     [SerializeField]
     UnityEvent OnGameEnd;
+
+    [SerializeField]
+    UnityEvent OnSeiritu;
+
+    [SerializeField]
+    UnityEvent OnKeturetu;
+
     /// <summary>
     /// スコア上昇時に発生するイベント
     /// </summary>
@@ -103,6 +110,7 @@ public class StageManager : MonoBehaviour
         isGameing = false;
         Debug.Log("ゲームオーバー");
         OnGameEnd.Invoke();
+        OnKeturetu.Invoke();
     }
 
     public void TimeUped()
@@ -110,6 +118,7 @@ public class StageManager : MonoBehaviour
         isGameing = false;
         Debug.Log("タイムアップ");
         OnGameEnd.Invoke();
+        OnSeiritu.Invoke();
     }
 
     /// <summary>
